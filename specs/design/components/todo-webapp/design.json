@@ -1,0 +1,49 @@
+{
+  "name": "todo-webapp",
+  "type": "web-application",
+  "version": "0.1.0",
+  "language": "TypeScript",
+  "buildpack": "docker",
+  "appPath": "todo-webapp",
+  "entrypoint": "deployment/web-application",
+  "exposure": "internet",
+  "stories": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "dependencies": [
+    {
+      "description": "Backend API for managing todo lists, todo items, and list sharing/collaboration.",
+      "kind": "component",
+      "name": "todo-api"
+    },
+    {
+      "description": "Thunder-issued OIDC client used by the SPA to sign users in and obtain tokens for calling todo-api.",
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "parameters": {
+        "scopes": "openid profile email"
+      },
+      "resourceType": "thunder-app"
+    }
+  ],
+  "description": "React single-page app where a signed-in user views their own and shared todo lists, manages list items with due dates, and manages sharing/collaborators on lists they own. Calls todo-api for all data; does not persist anything itself and holds no secrets.",
+  "skillsPinned": [
+    "wireframes",
+    "react-webapp",
+    "thunder-authentication",
+    "api-management"
+  ]
+}

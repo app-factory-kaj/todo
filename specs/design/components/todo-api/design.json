@@ -1,0 +1,51 @@
+{
+  "name": "todo-api",
+  "type": "service",
+  "version": "0.1.0",
+  "language": "Ballerina",
+  "buildpack": "docker",
+  "appPath": "todo-api",
+  "entrypoint": "deployment/service",
+  "exposure": "intranet",
+  "stories": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "dependencies": [
+    {
+      "description": "Stores users' todo lists, todo items, and list-sharing/collaborator records.",
+      "kind": "platform-resource",
+      "name": "todo-db",
+      "resourceType": "postgres-cnpg"
+    },
+    {
+      "description": "Validates the caller's Thunder-issued token (via the gateway) and resolves the signed-in user's identity for scoping lists and items.",
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "parameters": {
+        "scopes": "openid profile email"
+      },
+      "resourceType": "thunder-app"
+    }
+  ],
+  "description": "Ballerina REST API owning todo lists, todo items, and list sharing. Enforces that only a list's owner can rename/delete it or manage its collaborators, while owner and collaborators can both manage its items. Sits behind the gateway; does not serve any UI.",
+  "skillsPinned": [
+    "openapi-conventions",
+    "ballerina",
+    "database",
+    "thunder-authentication",
+    "api-management"
+  ]
+}
